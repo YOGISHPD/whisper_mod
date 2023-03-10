@@ -121,7 +121,7 @@ def transcribe(
     mel = log_mel_spectrogram(audio, padding=N_SAMPLES)
     content_frames = mel.shape[-1] - N_FRAMES
 
-    if decode_options.get("language", None) is None:
+    '''if decode_options.get("language", None) is None:
         if not model.is_multilingual:
             decode_options["language"] = "en"
         else:
@@ -135,7 +135,8 @@ def transcribe(
             if verbose is not None:
                 print(
                     f"Detected language: {LANGUAGES[decode_options['language']].title()}"
-                )
+                )'''
+    decode_options["language"] = "en"
 
     language: str = decode_options["language"]
     task: str = decode_options.get("task", "transcribe")
